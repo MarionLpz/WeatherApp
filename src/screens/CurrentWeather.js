@@ -1,24 +1,43 @@
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import RowText from '../components/RowText'
 
 const CurrentWeather = () => {
+  const {
+    wrapper,
+    container,
+    temp,
+    feels,
+    highLowWrapper,
+    highLow,
+    bodyWrapper,
+    description,
+    message
+  } = styles
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <View style={styles.container}>
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
         <Text>La météo du jour</Text>
         <Feather name="sun" size={100} color="black" />
-        <Text style={styles.temp}>6°</Text>
-        <Text style={styles.feels}>Ressenti 5°</Text>
-        <View style={styles.highLowWrapper}>
-          <Text style={styles.highLow}>Maximale: 8°</Text>
-          <Text style={styles.highLow}>Minimale: 5°</Text>
-        </View>
+        <Text style={temp}>6°</Text>
+        <Text style={feels}>Ressenti 5°</Text>
+
+        <RowText
+          messageOne={'Maximale: 8°'}
+          messageTwo={'Minimale: 5°'}
+          containerStyles={highLowWrapper}
+          messageOneStyles={highLow}
+          messageTwoStyles={highLow}
+        />
       </View>
-      <View style={styles.bodyWrapper}>
-        <Text style={styles.description}>C'est ensoleillé</Text>
-        <Text style={styles.message}>Dégaine ton meilleur t-shirt</Text>
-      </View>
+      <RowText
+        messageOne={"C'est ensoleillé"}
+        messageTwo={'Dégaine ton meilleur t-shirt'}
+        containerStyles={bodyWrapper}
+        messageOneStyles={description}
+        messageTwoStyles={message}
+      />
     </SafeAreaView>
   )
 }
@@ -27,39 +46,39 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   wrapper: {
     flex: 1,
-    backgroundColor: 'pink',
+    backgroundColor: 'pink'
   },
   temp: {
     color: 'black',
-    fontSize: 48,
+    fontSize: 48
   },
   feels: {
     color: 'black',
-    fontSize: 30,
+    fontSize: 30
   },
   highLow: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 20
   },
   highLowWrapper: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   bodyWrapper: {
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     paddingLeft: 25,
-    marginBottom: 40,
+    marginBottom: 40
   },
   description: {
-    fontSize: 48,
+    fontSize: 48
   },
   message: {
-    fontSize: 30,
-  },
+    fontSize: 30
+  }
 })
 
 export default CurrentWeather
